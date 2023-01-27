@@ -11,18 +11,21 @@ public class guyScript : MonoBehaviour
     public float inputMove;
     [SerializeField]
     public GameObject bullet;
+    public Animator animator;
+    public float inputHorizontal;
 
    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
     void Update()
     {
+      inputHorizontal = Input.GetAxisRaw("Horizontal");
         Move();
      //Shoot();
        
@@ -32,10 +35,15 @@ public class guyScript : MonoBehaviour
     void Move()
     {
     Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-
+    animator.SetFloat("speed",Mathf.Abs(inputHorizontal));
      this.transform.position += Movement * speed * Time.deltaTime;
-
+      if(inputHorizontal < 0){
+        gameObject.transform.localScale = new Vector3(-1,1,1);
+      }
      
+      if(inputHorizontal > 0){
+        gameObject.transform.localScale = new Vector3(1,1,1);
+      }
 
     }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PointShootScript : MonoBehaviour
 {
+    //https://www.youtube.com/watch?v=7-8nE9_FwWs
     public float speed = 60f;
     public GameObject bullet;
      public GameObject crosshair;
@@ -35,6 +36,7 @@ public class PointShootScript : MonoBehaviour
             direction.Normalize();
             fire(direction, rotationZ);
         }
+
   
     }
     void fire(Vector2 direction, float rotationZ){

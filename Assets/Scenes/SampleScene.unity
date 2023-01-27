@@ -362,6 +362,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5854474004286794551, guid: 4243e951d03d3114e8b7d627cefec5a8, type: 3}
   m_PrefabInstance: {fileID: 1949116317}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1699507431 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7930223546459027483, guid: 4243e951d03d3114e8b7d627cefec5a8, type: 3}
+  m_PrefabInstance: {fileID: 1949116317}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1904249794
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +458,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 736982689385451536, guid: 4243e951d03d3114e8b7d627cefec5a8, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1699507431}
     - target: {fileID: 5854474004286794551, guid: 4243e951d03d3114e8b7d627cefec5a8, type: 3}
       propertyPath: m_Name
       value: Guy

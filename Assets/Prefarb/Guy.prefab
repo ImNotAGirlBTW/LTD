@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6863183802173948440}
   - component: {fileID: 574179688804035320}
   - component: {fileID: 736982689385451536}
+  - component: {fileID: 7930223546459027483}
   m_Layer: 0
   m_Name: Guy
   m_TagString: Untagged
@@ -100,3 +101,23 @@ MonoBehaviour:
   speed: 5
   inputMove: 0
   bullet: {fileID: 6985188152371403798, guid: 93e7d636c452d7d4aa3bdb8d0c61bed6, type: 3}
+--- !u!95 &7930223546459027483
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854474004286794551}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a238b0bfde475e14197314225b4fbdf5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
