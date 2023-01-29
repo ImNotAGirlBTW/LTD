@@ -13,7 +13,8 @@ public class guyScript : MonoBehaviour
     public GameObject bullet;
     public Animator animator;
     public float inputHorizontal;
-
+    public float inputVertical;
+    public Sprite GuyBack;
    
 
     // Start is called before the first frame update
@@ -26,9 +27,10 @@ public class guyScript : MonoBehaviour
     void Update()
     {
       inputHorizontal = Input.GetAxisRaw("Horizontal");
+      inputVertical = Input.GetAxisRaw("Vertical");
         Move();
      //Shoot();
-       
+    
         
     }
 
@@ -36,6 +38,7 @@ public class guyScript : MonoBehaviour
     {
     Vector3 Movement = new Vector3(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
     animator.SetFloat("speed",Mathf.Abs(inputHorizontal));
+    animator.SetFloat("VerticalM",Mathf.Abs(inputVertical));
      this.transform.position += Movement * speed * Time.deltaTime;
       if(inputHorizontal < 0){
         gameObject.transform.localScale = new Vector3(-1,1,1);
@@ -44,6 +47,7 @@ public class guyScript : MonoBehaviour
       if(inputHorizontal > 0){
         gameObject.transform.localScale = new Vector3(1,1,1);
       }
+
 
     }
 
