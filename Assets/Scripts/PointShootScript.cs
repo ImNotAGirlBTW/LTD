@@ -12,6 +12,9 @@ public class PointShootScript : MonoBehaviour
     private Vector3 target;
     public GameObject Player;
      public GameObject GunL;
+    public LayerMask enemyLayers;
+    public int attackDamage = 40;
+
      
     // Start is called before the first frame update
     void Start()
@@ -35,6 +38,7 @@ public class PointShootScript : MonoBehaviour
             Vector2 direction = difference / distance;
             direction.Normalize();
             fire(direction, rotationZ);
+            
         }
 
   
@@ -46,4 +50,6 @@ public class PointShootScript : MonoBehaviour
         b.GetComponent<Rigidbody2D>().velocity = direction * speed;
     }
 
+  
 }
+
