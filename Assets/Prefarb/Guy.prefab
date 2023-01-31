@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 236662464148380456}
   - component: {fileID: 1046356814846599616}
   - component: {fileID: 7688487270788352459}
+  - component: {fileID: 3555263086164298905}
+  - component: {fileID: -2797161149973783124}
   m_Layer: 0
   m_Name: Guy
   m_TagString: Untagged
@@ -104,10 +106,9 @@ MonoBehaviour:
   animator: {fileID: 7688487270788352459}
   inputHorizontal: 0
   inputVertical: 0
-  GuyBack: {fileID: 21300000, guid: f2a87e0645bad3a4ca54eeb62e511262, type: 3}
 --- !u!95 &7688487270788352459
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -124,4 +125,37 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &3555263086164298905
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161042169698638567}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-2797161149973783124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6161042169698638567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64067afe417a28d438e4109f7a6285fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
