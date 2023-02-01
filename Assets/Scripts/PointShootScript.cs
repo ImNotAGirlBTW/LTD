@@ -25,7 +25,7 @@ public class PointShootScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+    
        target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,transform.position.z));
          crosshair.transform.position = new Vector2(target.x, target.y); 
 
@@ -38,16 +38,25 @@ public class PointShootScript : MonoBehaviour
             Vector2 direction = difference / distance;
             direction.Normalize();
             fire(direction, rotationZ);
-            
+           
         }
 
-  
+        FlipG(rotationZ);
     }
     void fire(Vector2 direction, float rotationZ){
         GameObject b = Instantiate(bullet) as GameObject;
         b.transform.position = GunL.transform.position;
         b.transform.rotation = Quaternion.Euler(0.0f,0.0f,rotationZ);
         b.GetComponent<Rigidbody2D>().velocity = direction * speed;
+    }
+
+    void FlipG(float rotationZ)
+    {
+        if(rotationZ >= 90){
+           playerG.transform.localScale = new Vector3(1,-1,1);
+        }else if(rotationZ >= -90){
+            playerG.transform.localScale = new Vector3(1,1,1);
+        }
     }
 
   
