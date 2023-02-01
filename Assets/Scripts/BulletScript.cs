@@ -7,6 +7,7 @@ public class BulletScript : MonoBehaviour
     [SerializeField]
     public float speed = 5f;
     public int Attack = 20;
+    public GameObject Bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     //transform.position += new Vector3(0f, speed, 0f)  * Time.deltaTime;
+        Physics2D.IgnoreCollision(Bullet.GetComponent<Collider2D>(),this.GetComponent<Collider2D>());
     }
 
     
