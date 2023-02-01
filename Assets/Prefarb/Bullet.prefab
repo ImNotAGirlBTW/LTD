@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   Attack: 20
+  Bullet: {fileID: 6985188152371403798}
 --- !u!50 &5258566878552453367
 Rigidbody2D:
   serializedVersion: 4
