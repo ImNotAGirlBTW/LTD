@@ -29,6 +29,7 @@ public class PointShootScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         
        target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,transform.position.z));
          crosshair.transform.position = new Vector2(target.x, target.y); 
@@ -44,9 +45,10 @@ public class PointShootScript : MonoBehaviour
             Vector2 direction = difference / distance;
             direction.Normalize();
             fire(direction, rotationZ);
-            Debug.Log(clickAmount +"  " + hasAmmo);
            }
         }
+
+          Debug.Log(rotationZ);
     
         FlipG(rotationZ);
         checkAmmo();
@@ -63,10 +65,12 @@ public class PointShootScript : MonoBehaviour
     {
         if(Mathf.Abs(rotationZ) >= 90.01f){
            playerG.transform.localScale = new Vector3(1,-1,1);
+            Player.transform.localScale = new Vector3(-1,1,1);
         }
 
          if(Mathf.Abs(rotationZ) <= 89.99f){
            playerG.transform.localScale = new Vector3(1,1,1);
+            Player.transform.localScale = new Vector3(1,1,1);
         }
        
     }
