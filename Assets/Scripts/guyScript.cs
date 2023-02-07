@@ -29,7 +29,7 @@ public class guyScript : MonoBehaviour
       inputHorizontal = Input.GetAxisRaw("Horizontal");
       inputVertical = Input.GetAxisRaw("Vertical");
         Move();
-        
+
     }
 
     void Move()
