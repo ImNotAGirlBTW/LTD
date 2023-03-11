@@ -166,6 +166,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -263,6 +264,21 @@ MonoBehaviour:
   attackDamage: 40
   hasAmmo: 0
   clickAmount: 0
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35487c8f164fe574f9f384080a3737dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowSpeed: 2
+  yOffset: 1
+  target: {fileID: 5854474005027278000}
 --- !u!4 &750818855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7064263168490100910, guid: fc2b0f5663b1f33479caa7bb46855160, type: 3}
@@ -654,6 +670,11 @@ PrefabInstance:
 --- !u!1 &5854474005027277994 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6161042169698638567, guid: e7ceaf397fcf9b4478ae765f18ab8cc8, type: 3}
+  m_PrefabInstance: {fileID: 342042825291863629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5854474005027278000 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6593766204305322952, guid: e7ceaf397fcf9b4478ae765f18ab8cc8, type: 3}
   m_PrefabInstance: {fileID: 342042825291863629}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7064263168016174729
