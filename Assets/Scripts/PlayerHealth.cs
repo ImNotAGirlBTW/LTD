@@ -24,9 +24,9 @@ public class PlayerHealth : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag.Equals("Bullet"))
+        if (col.gameObject.tag.Equals("Enemy"))
         {
-            health -= col.gameObject.GetComponent<BulletScript>().Attack;
+            health -= col.gameObject.GetComponent<FollowEnemyScript>().Attack;
             Debug.Log(health);
 
             Destroy(col.gameObject);

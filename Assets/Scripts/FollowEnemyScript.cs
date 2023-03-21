@@ -7,6 +7,10 @@ public class FollowEnemyScript : MonoBehaviour
     public float speed;
     private float lineOfSite = 8f;
     private Transform player;
+    public int Attack = 20;
+
+    public int maxHealth = 100;
+    public int currentHealth;
 
 
 
@@ -15,7 +19,7 @@ public class FollowEnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        currentHealth = 100;
         player = GameObject.FindGameObjectWithTag("player").transform;
     }
 
@@ -35,13 +39,32 @@ public class FollowEnemyScript : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lineOfSite);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D col)
     {
-        if (collision.gameObject.tag == "player")
+        if (col.gameObject.tag == "player")
         {
             playerHealth.TakeDamage(damage);
         }
+        else
+        {
+            Destroy(col.gameObject);
+        }
+
+        if (col.gameObject.tag.Equals("Bullet"))
+        {
+            currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack;
+            Debug.Log(currentHealth);
+            Destroy(col.gameObject);
+            //Destroy(gameObject);
+        }
+
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
+
+
 
 }
 
