@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public int maxHealth = 4;
     public int health;
-    // Start is called before the first frame update
+
+    public Image[] hearts;
+    public Sprite fullHeart;
+   //  public Sprite halfHeart;
+    public Sprite emptyHeart;
+    //Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
     }
 
-   
+    void Update()
+    {
+        foreach (Image img in hearts)
+        {
+            img.sprite = emptyHeart;
+            // img.sprite = halfHeart;
+        }
+
+        for (int i = 0; i < health; i++)
+        {
+
+            hearts[i].sprite = fullHeart;
+        }
+    }
+
+
     public void TakeDamage(int damage)
     {
         health -= damage;
@@ -39,4 +60,5 @@ public class PlayerHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
