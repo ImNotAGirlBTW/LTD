@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using TMPro;
 
 public class PointShootScript : MonoBehaviour
 {
@@ -16,14 +18,17 @@ public class PointShootScript : MonoBehaviour
     public int attackDamage = 40;
     public bool hasAmmo;
     public int clickAmount;
+    public TMP_Text AmmoText;
 
      
     // Start is called before the first frame update
     void Start()
     {
+   
           Cursor.visible = false;
           hasAmmo = true;
-        clickAmount = 0;
+        clickAmount = 10;
+        AmmoText.text = clickAmount +"/∞";
     }
 
     // Update is called once per frame
@@ -58,7 +63,8 @@ public class PointShootScript : MonoBehaviour
         b.transform.position = GunL.transform.position;
         b.transform.rotation = Quaternion.Euler(0.0f,0.0f,rotationZ);
         b.GetComponent<Rigidbody2D>().velocity = direction * speed;
-        clickAmount += 1;
+        clickAmount -= 1;
+        AmmoText.text = clickAmount +"/∞";
     }
 
     void FlipG(float rotationZ)
@@ -78,9 +84,9 @@ public class PointShootScript : MonoBehaviour
 
     void checkAmmo()
     {
-        if(clickAmount == 10){
+        if(clickAmount == 0){
             hasAmmo = false;
-            clickAmount =0;
+            clickAmount =10;
 
     }
     }
@@ -91,6 +97,7 @@ public class PointShootScript : MonoBehaviour
         {
             Debug.Log("reloding");
       yield return new WaitForSeconds(1.5f );
+      AmmoText.text = clickAmount +"/∞";
         hasAmmo =true;
                 }
     }
