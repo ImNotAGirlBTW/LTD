@@ -14,13 +14,19 @@ public class guyScript : MonoBehaviour
     public Animator animator;
     public float inputHorizontal;
     public float inputVertical;
+    public Vector2 direction;
+    public Rigidbody2D rb;
+    public bool DodgeRoll;
+    public float DodgeSpeed;
+    public float DodgeTime;
+    
     
    
 
     // Start is called before the first frame update
     void Start()
     {
-      
+    rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -30,6 +36,13 @@ public class guyScript : MonoBehaviour
       inputVertical = Input.GetAxisRaw("Vertical");
         Move();
 
+
+
+        if(Input.GetMouseButtonDown(1))
+        {
+          rb.AddForce(direction * DodgeSpeed);
+        }
+
     }
 
     void Move()
@@ -38,6 +51,7 @@ public class guyScript : MonoBehaviour
     animator.SetFloat("speed",Mathf.Abs(inputHorizontal));
     animator.SetFloat("VerticalM",inputVertical);
      this.transform.position += Movement * speed * Time.deltaTime;
+
       if(inputHorizontal < 0){
         gameObject.transform.localScale = new Vector3(-1,1,1);
       }
@@ -48,6 +62,16 @@ public class guyScript : MonoBehaviour
 
 
     }
+    
+
+    IEnumerator Roll()
+    {
+      DodgeRoll = true;
+      yield return new WaitForSeconds(DodgeTime);
+      DodgeRoll  = false;
+    }
+
+
 
   /**  void Shoot(Vector2 direction, float rotationZ)
     {
