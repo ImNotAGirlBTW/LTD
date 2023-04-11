@@ -11,6 +11,7 @@ public class FollowEnemyScript : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
+    public GameObject key;
 
 
 
@@ -44,10 +45,13 @@ public class FollowEnemyScript : MonoBehaviour
         if (col.gameObject.tag == "player")
         {
             playerHealth.TakeDamage(damage);
+            Instantiate(key, transform.position, Quaternion.identity);
         }
         else
         {
+            
             Destroy(col.gameObject);
+            
         }
 
         if (col.gameObject.tag.Equals("Bullet"))
@@ -60,7 +64,9 @@ public class FollowEnemyScript : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            Instantiate(key, transform.position, Quaternion.identity);
             Destroy(gameObject);
+          
         }
     }
 

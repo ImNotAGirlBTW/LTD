@@ -19,7 +19,7 @@ public class PointShootScript : MonoBehaviour
     public bool hasAmmo;
     public int clickAmount;
     public TMP_Text AmmoText;
-
+    public float rotationZ;
      
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class PointShootScript : MonoBehaviour
          crosshair.transform.position = new Vector2(target.x, target.y); 
 
          Vector3 difference = target - playerG.transform.position;
-         float rotationZ = Mathf.Atan2(difference.y,difference.x)* Mathf.Rad2Deg;
+          rotationZ = Mathf.Atan2(difference.y,difference.x)* Mathf.Rad2Deg;
          playerG.transform.rotation = Quaternion.Euler(0.0f,0.0f,rotationZ );
         playerG.transform.position = Player.transform.position;
         StartCoroutine(Reload());
@@ -53,7 +53,7 @@ public class PointShootScript : MonoBehaviour
            }
         }
 
-          Debug.Log(rotationZ);
+          //Debug.Log(rotationZ);
     
         FlipG(rotationZ);
         checkAmmo();
