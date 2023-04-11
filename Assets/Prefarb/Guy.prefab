@@ -107,6 +107,12 @@ MonoBehaviour:
   animator: {fileID: 7688487270788352459}
   inputHorizontal: 0
   inputVertical: 0
+  KeyScoreText: {fileID: 0}
+  direction: {x: 0, y: 0}
+  CanRoll: 0
+  DodgeSpeed: 2
+  DodgeTime: 0.02
+  DodgeCool: 2
 --- !u!95 &7688487270788352459
 Animator:
   serializedVersion: 4
@@ -141,6 +147,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 100
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!61 &-736328485839808989
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,4 +196,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 7
+  m_Constraints: 4

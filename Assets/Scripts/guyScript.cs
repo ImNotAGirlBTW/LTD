@@ -14,11 +14,14 @@ public class guyScript : MonoBehaviour
     public Animator animator;
     public float inputHorizontal;
     public float inputVertical;
+    public Text KeyScoreText;
+    private int ScoreNum;
     public Vector2 direction;
-    public Rigidbody2D rb;
-    public bool DodgeRoll;
-    public float DodgeSpeed;
-    public float DodgeTime;
+    private Rigidbody2D rb;
+    public bool CanRoll;
+    public float DodgeSpeed = 2f;
+    public float DodgeTime = 0.02f;
+    public float DodgeCool = 2f;
     
     
    
@@ -27,6 +30,8 @@ public class guyScript : MonoBehaviour
     void Start()
     {
     rb = gameObject.GetComponent<Rigidbody2D>();
+     ScoreNum= 0;
+     KeyScoreText.text = "" + ScoreNum;  
     }
 
     // Update is called once per frame
@@ -37,12 +42,13 @@ public class guyScript : MonoBehaviour
         Move();
 
 
-
-        if(Input.GetMouseButtonDown(1))
+      direction = new  Vector2(inputHorizontal,inputVertical);
+           if(Input.GetMouseButtonDown(1))
         {
-          rb.AddForce(direction * DodgeSpeed);
+        
+          Debug.Log("CLICK");
+          StartCoroutine(Roll());
         }
-
     }
 
     void Move()
@@ -66,9 +72,24 @@ public class guyScript : MonoBehaviour
 
     IEnumerator Roll()
     {
-      DodgeRoll = true;
+      CanRoll = true;
+       rb.AddForce(direction * DodgeSpeed,ForceMode2D.Impulse);
       yield return new WaitForSeconds(DodgeTime);
-      DodgeRoll  = false;
+      CanRoll  = false;
+      rb.velocity = Vector2.zero;
+      yield return new WaitForSeconds(DodgeCool);
+    }
+
+        
+   void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Key"))
+        {
+            ScoreNum += 1;
+            Destroy(collision.gameObject);
+            KeyScoreText.text = "" + ScoreNum;
+            // změna stavu klíče na vypnuto
+        }
     }
 
 
