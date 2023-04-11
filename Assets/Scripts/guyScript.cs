@@ -14,13 +14,17 @@ public class guyScript : MonoBehaviour
     public Animator animator;
     public float inputHorizontal;
     public float inputVertical;
+
+    public Text KeyScoreText;
+    private int ScoreNum;
     
    
 
     // Start is called before the first frame update
     void Start()
     {
-      
+      ScoreNum= 0;
+        KeyScoreText.text = "" + ScoreNum;  
     }
 
     // Update is called once per frame
@@ -49,23 +53,34 @@ public class guyScript : MonoBehaviour
 
     }
 
-  /**  void Shoot(Vector2 direction, float rotationZ)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-      Vector3 mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        
-        if(Input.GetMouseButtonDown(0))
+        if (collision.gameObject.CompareTag("Key"))
         {
-            GameObject b = Instantiate(bullet) as GameObject;
-            b.transform.position = new Vector2(
-            mousePos.x - transform.position.x,
-             mousePos.y - transform.position.y
-        );
-            b.transform.rotation = Quaternion.Euler(0.0f,0.0f, rotationZ);
-            b.GetComponent<Rigidbody2D>().velocity = direction * speed;
-        }*/
-    
-    
+            ScoreNum += 1;
+            Destroy(collision.gameObject);
+            KeyScoreText.text = "" + ScoreNum;
+            // zmìna stavu klíèe na vypnuto
+        }
+    }
+
+    /**  void Shoot(Vector2 direction, float rotationZ)
+      {
+        Vector3 mousePos = Input.mousePosition;
+          mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+          
+          if(Input.GetMouseButtonDown(0))
+          {
+              GameObject b = Instantiate(bullet) as GameObject;
+              b.transform.position = new Vector2(
+              mousePos.x - transform.position.x,
+               mousePos.y - transform.position.y
+          );
+              b.transform.rotation = Quaternion.Euler(0.0f,0.0f, rotationZ);
+              b.GetComponent<Rigidbody2D>().velocity = direction * speed;
+          }*/
+
+
 
 }
 
