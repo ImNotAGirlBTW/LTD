@@ -12,6 +12,7 @@ public class FollowEnemyScript : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public GameObject key;
+    public Animator animator;
 
 
 
@@ -31,6 +32,7 @@ public class FollowEnemyScript : MonoBehaviour
         if (distanceFromPlayer < lineOfSite)
         {
             transform.position = Vector3.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
+            StartCoroutine(Timer());
         }
     }
 
@@ -49,9 +51,9 @@ public class FollowEnemyScript : MonoBehaviour
         }
         else
         {
-            
+
             Destroy(col.gameObject);
-            
+
         }
 
         if (col.gameObject.tag.Equals("Bullet"))
@@ -66,8 +68,17 @@ public class FollowEnemyScript : MonoBehaviour
         {
             Instantiate(key, transform.position, Quaternion.identity);
             Destroy(gameObject);
-          
+
         }
+
+   
+    }
+
+    IEnumerator Timer()
+    {
+        animator.SetBool("inRange", true);
+        yield return new WaitForSeconds(2f);
+        animator.SetBool("inRange", false);
     }
 
 

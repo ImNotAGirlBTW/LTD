@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Bullet
   - player
+  - Key
+  - Bot
+  - BulletBot
   layers:
   - Default
   - TransparentFX

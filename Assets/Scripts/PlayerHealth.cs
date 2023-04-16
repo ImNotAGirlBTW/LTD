@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public Sprite fullHeart;
    //  public Sprite halfHeart;
     public Sprite emptyHeart;
+
+    public bool isAlive = true;
     //Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            isAlive = false;
             Destroy(gameObject);
         }
     }
@@ -48,6 +51,16 @@ public class PlayerHealth : MonoBehaviour
         if (col.gameObject.tag.Equals("Enemy"))
         {
             health -= col.gameObject.GetComponent<FollowEnemyScript>().Attack;
+            Debug.Log(health);
+
+            Destroy(col.gameObject);
+
+            //Destroy(gameObject);
+        }
+
+        if (col.gameObject.tag.Equals("BulletBot"))
+        {
+            health -= col.gameObject.GetComponent<BulletBotScript>().Attack;
             Debug.Log(health);
 
             Destroy(col.gameObject);

@@ -7,6 +7,8 @@ public class CameraFollow : MonoBehaviour
     public float FollowSpeed = 2f;
     public float yOffset = 1f; //výška jak od spodu ta kamera bude vysoko
     public Transform target;
+
+
    
     // Update is called once per frame
     void Update()
