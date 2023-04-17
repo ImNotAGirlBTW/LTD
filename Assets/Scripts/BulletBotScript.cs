@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class BulletBotScript : MonoBehaviour
 {
-    public int damage; // poškození, které støela zpùsobí
+    public int damage; // poï¿½kozenï¿½, kterï¿½ stï¿½ela zpï¿½sobï¿½
     public int Attack = 20;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // reakce na kolizi se zdi nebo jiným objektem
+        // reakce na kolizi se zdi nebo jinï¿½m objektem
         if (!other.CompareTag("Bot") && !other.CompareTag("BulletBot"))
         {
-            Destroy(gameObject); // znièení støely
+            Destroy(gameObject); // zniï¿½enï¿½ stï¿½ely
         }
 
-        // reakce na kolizi s hráèem
+        // reakce na kolizi s hrï¿½ï¿½em
         if (other.CompareTag("player"))
         {
-            // snížení zdraví hráèe
+            // snï¿½enï¿½ zdravï¿½ hrï¿½ï¿½e
             PlayerHealth player = other.GetComponent<PlayerHealth>();
             if (player.isAlive)
             {
                 player.TakeDamage(damage);
             }
 
-            // znièení bota
+            // zniï¿½enï¿½ bota
             Destroy(gameObject);
         }
+    }
+
+    public void destroy()
+    {
+        Destroy(gameObject);
     }
 }
