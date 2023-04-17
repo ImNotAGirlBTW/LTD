@@ -17,7 +17,12 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Physics2D.IgnoreCollision(Bullet.GetComponent<Collider2D>(),this.GetComponent<Collider2D>());
+       // Physics2D.IgnoreCollision(Bullet.GetComponent<Collider2D>(),this.GetComponent<Collider2D>());
+    }
+
+    void Destroy()
+    {
+        Destroy(gameObject);
     }
 
     
