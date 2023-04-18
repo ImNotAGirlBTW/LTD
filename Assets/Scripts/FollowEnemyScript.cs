@@ -13,7 +13,7 @@ public class FollowEnemyScript : MonoBehaviour
     public int currentHealth;
     public GameObject key;
     public Animator animator;
-
+    public bool FirstInRange;
 
 
     public int damage;
@@ -21,6 +21,7 @@ public class FollowEnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FirstInRange = false;
         currentHealth = 100;
         player = GameObject.FindGameObjectWithTag("player").transform;
     }
@@ -28,12 +29,25 @@ public class FollowEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(FirstInRange);
         float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite)
         {
+            FirstInRange = true;
             transform.position = Vector3.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
-            StartCoroutine(Timer());
+            if (FirstInRange)
+            {
+                StartCoroutine(Timer());
+                FirstInRange = false;
+            }
         }
+        else
+        {
+            FirstInRange = false;
+            animator.SetBool("inRange", false);
+            animator.SetBool("ShouldChange", false);
+        }
+        
     }
 
     private void OnDrawGizmosSelected()
@@ -77,8 +91,9 @@ public class FollowEnemyScript : MonoBehaviour
     IEnumerator Timer()
     {
         animator.SetBool("inRange", true);
-        yield return new WaitForSeconds(2f);
-        animator.SetBool("inRange", false);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool("ShouldChange", true);
+
     }
 
 

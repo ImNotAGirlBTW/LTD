@@ -8,6 +8,7 @@ public class BulletManScript : MonoBehaviour
     public float shootInterval = 2f; // interval støelby
     public GameObject bulletBotPrefab; // prefab støely
 
+    //public Transform gunTransform; // reference na transform zbranì
     private GameObject player; // reference na hráèe
     private float lastShootTime; // èas poslední støelby
 
@@ -44,6 +45,16 @@ public class BulletManScript : MonoBehaviour
             Shoot();
             lastShootTime = Time.time;
         }
+
+        // Otoèení zbranì vlevo nebo vpravo
+        /*if (direction.x < 0) // hráè je vlevo
+        {
+            gunTransform.localRotation = Quaternion.Euler(0f, 180f, 0f); // otoèení zbranì doleva
+        }
+        else // hráè je vpravo nebo v pøímé linii
+        {
+            gunTransform.localRotation = Quaternion.Euler(0f, 0f, 0f); // otoèení zbranì doprava
+        } */
     }
 
     void Shoot()
@@ -80,17 +91,6 @@ public class BulletManScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-       /* if (col.gameObject.tag == "player")
-        {
-            playerHealth.TakeDamage(damage);
-            Instantiate(key, transform.position, Quaternion.identity);
-        }
-        else
-        {
-
-            Destroy(col.gameObject);
-
-        } */
 
         if (col.gameObject.tag.Equals("Bullet"))
         {
@@ -108,5 +108,5 @@ public class BulletManScript : MonoBehaviour
         }
 
 
-    }
+    } 
 }
