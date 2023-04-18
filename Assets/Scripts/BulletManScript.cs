@@ -8,8 +8,10 @@ public class BulletManScript : MonoBehaviour
     public float shootInterval = 2f; // interval st�elby
     public GameObject bulletBotPrefab; // prefab st�ely
 
+
     private GameObject player; // reference na hr��e
     private float lastShootTime; // �as posledn� st�elby
+
 
     private Rigidbody2D rb;
 
@@ -44,6 +46,16 @@ public class BulletManScript : MonoBehaviour
             Shoot();
             lastShootTime = Time.time;
         }
+
+        // Oto�en� zbran� vlevo nebo vpravo
+        /*if (direction.x < 0) // hr�� je vlevo
+        {
+            gunTransform.localRotation = Quaternion.Euler(0f, 180f, 0f); // oto�en� zbran� doleva
+        }
+        else // hr�� je vpravo nebo v p��m� linii
+        {
+            gunTransform.localRotation = Quaternion.Euler(0f, 0f, 0f); // oto�en� zbran� doprava
+        } */
     }
 
     void Shoot()
@@ -81,17 +93,6 @@ public class BulletManScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-       /* if (col.gameObject.tag == "player")
-        {
-            playerHealth.TakeDamage(damage);
-            Instantiate(key, transform.position, Quaternion.identity);
-        }
-        else
-        {
-
-            Destroy(col.gameObject);
-
-        } */
 
         if (col.gameObject.tag.Equals("Bullet"))
         {
@@ -109,5 +110,5 @@ public class BulletManScript : MonoBehaviour
         }
 
 
-    }
+    } 
 }

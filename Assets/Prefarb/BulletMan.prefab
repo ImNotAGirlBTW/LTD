@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7387051976875749543
+--- !u!1 &2104305418118707405
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1076107448767667435}
-  - component: {fileID: 2960523789258517182}
-  - component: {fileID: 7738474383333600140}
-  - component: {fileID: -3794173249076167141}
-  - component: {fileID: -7337370011792473129}
+  - component: {fileID: 2104305418118707394}
+  - component: {fileID: 2104305418118707393}
+  - component: {fileID: 2104305418118707392}
+  - component: {fileID: 2104305418118707407}
+  - component: {fileID: 2104305418118707406}
   m_Layer: 0
   m_Name: BulletMan
   m_TagString: Bot
@@ -20,28 +20,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1076107448767667435
+--- !u!4 &2104305418118707394
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7387051976875749543}
+  m_GameObject: {fileID: 2104305418118707405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5609117, y: 2.8533294, z: 0}
+  m_LocalPosition: {x: 26.95, y: 17.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &2960523789258517182
+--- !u!212 &2104305418118707393
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7387051976875749543}
+  m_GameObject: {fileID: 2104305418118707405}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -87,14 +87,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7738474383333600140
+--- !u!50 &2104305418118707392
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7387051976875749543}
+  m_GameObject: {fileID: 2104305418118707405}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -108,13 +108,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-3794173249076167141
+--- !u!114 &2104305418118707407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7387051976875749543}
+  m_GameObject: {fileID: 2104305418118707405}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ef73593cf0033a47b51b6f7401e53bf, type: 3}
@@ -125,13 +125,15 @@ MonoBehaviour:
   bulletBotPrefab: {fileID: 3959489801635910746, guid: d5d7ac554dd139b4d958407db2b1188f, type: 3}
   damage: 1
   playerHealth: {fileID: 8273029838982093311, guid: e7ceaf397fcf9b4478ae765f18ab8cc8, type: 3}
---- !u!58 &-7337370011792473129
+  maxHealth: 100
+  currentHealth: 0
+--- !u!58 &2104305418118707406
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7387051976875749543}
+  m_GameObject: {fileID: 2104305418118707405}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
