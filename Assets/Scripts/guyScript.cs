@@ -45,8 +45,7 @@ public class guyScript : MonoBehaviour
       direction = new  Vector2(inputHorizontal,inputVertical);
            if(Input.GetMouseButtonDown(1))
         {
-        
-          Debug.Log("CLICK");
+          
           StartCoroutine(Roll());
         }
     }
