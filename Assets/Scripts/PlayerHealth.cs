@@ -42,7 +42,8 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             isAlive = false;
-            Destroy(gameObject);
+            Time.timeScale = 0f;
+            //Destroy(gameObject);
         }
     }
 
@@ -70,7 +71,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+             Time.timeScale = 0;
         }
     }
 

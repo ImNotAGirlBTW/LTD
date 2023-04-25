@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField]
-    public int maxHealth = 100;
+    //[SerializeField]
+    //public int maxHealth = 100;
     public Animator animator;
-    public int currentHealth;
+    //public int currentHealth;*/
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = 100;
+       // currentHealth = 100;
         animator.SetBool("hit", false);
     }
 
@@ -20,10 +20,7 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
 
- if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
+
 
 
     }
@@ -32,24 +29,24 @@ public class EnemyScript : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Bullet"))
         {
-            currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack;
-            Debug.Log(currentHealth);
+           // currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack;
+            //Debug.Log(currentHealth);
             animator.SetBool("hit", true);
-            Destroy(col.gameObject);
+            //Destroy(col.gameObject);
             StartCoroutine(Blink());
             //Destroy(gameObject);
         }
 
-        if (currentHealth <= 0)
+        /*if (currentHealth <= 0)
         {
             Destroy(gameObject);
-        }
+        }*/
     }
 
     IEnumerator Blink()
     {
         yield return new WaitForSeconds(0.2f);
-        animator.SetBool("hit", false);
+       animator.SetBool("hit", false);
     }
 
     

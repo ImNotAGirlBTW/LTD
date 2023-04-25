@@ -66,7 +66,7 @@ public class FollowEnemyScript : MonoBehaviour
         else
         {
 
-            Destroy(col.gameObject);
+         //   Destroy(col.gameObject);
 
         }
 

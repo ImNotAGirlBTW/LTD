@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99edb206672662f44855c2a010b72426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 160
   Attack: 20
   Bullet: {fileID: 6985188152371403798}
 --- !u!50 &5258566878552453367

@@ -18,16 +18,16 @@ public class BulletManScript : MonoBehaviour
     public int damage;
     public PlayerHealth playerHealth;
 
-    public int maxHealth = 100;
-    public int currentHealth;
+    public bool canDmg;
 
     void Start()
     {
+        canDmg = true;
         player = GameObject.FindGameObjectWithTag("player"); // z�sk�n� reference na hr��e
         rb = GetComponent<Rigidbody2D>();
         lastShootTime = Time.time; // inicializace �asu posledn� st�elby
 
-        currentHealth = 100;
+
 
 
 
@@ -39,7 +39,7 @@ public class BulletManScript : MonoBehaviour
         // n�sledov�n� hr��e
         Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.velocity = direction * speed;
-
+       // Debug.Log(rb.velocity);
         // st�elba na hr��e s intervaly
         if (Time.time - lastShootTime > shootInterval)
         {
@@ -47,15 +47,6 @@ public class BulletManScript : MonoBehaviour
             lastShootTime = Time.time;
         }
 
-        // Oto�en� zbran� vlevo nebo vpravo
-        /*if (direction.x < 0) // hr�� je vlevo
-        {
-            gunTransform.localRotation = Quaternion.Euler(0f, 180f, 0f); // oto�en� zbran� doleva
-        }
-        else // hr�� je vpravo nebo v p��m� linii
-        {
-            gunTransform.localRotation = Quaternion.Euler(0f, 0f, 0f); // oto�en� zbran� doprava
-        } */
     }
 
     void Shoot()
@@ -68,7 +59,7 @@ public class BulletManScript : MonoBehaviour
 
         // vyst�elen� st�ely
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        bulletRb.AddForce(direction * 10f, ForceMode2D.Impulse);
+        bulletRb.AddForce(direction * 1f, ForceMode2D.Impulse);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -76,39 +67,36 @@ public class BulletManScript : MonoBehaviour
         // reakce na kolizi s hr��em
         if (other.CompareTag("player"))
         {
+            Debug.Log("stop");
+            speed =0f;
             // sn�en� zdrav� hr��e
-            PlayerHealth health = other.GetComponent<PlayerHealth>();
-            if (health != null)
-            {
-                health.TakeDamage(damage);
+            if(canDmg){
+                canDmg = false;
+            StartCoroutine(TakeDamage(1,other));
             }
 
-            // zni�en� bota
-           // Destroy(gameObject);
            
         }
 
         
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-
-        if (col.gameObject.tag.Equals("Bullet"))
-        {
-            currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack;
-            Debug.Log(currentHealth);
-            Destroy(col.gameObject);
-            //Destroy(gameObject);
+        void OnTriggerExit2D(Collider2D other){
+              if (other.CompareTag("player")){
+                speed =5f;
+              }
         }
 
-        if (currentHealth <= 0)
+        public IEnumerator TakeDamage(int damage, Collider2D other)
         {
-           
-            Destroy(gameObject);
+                PlayerHealth health = other.GetComponent<PlayerHealth>();
+            if (health != null)
+            {
+                health.TakeDamage(damage);
+            }
 
+            yield return new WaitForSeconds(2f);
+            canDmg = true;
         }
 
-
-    } 
 }
