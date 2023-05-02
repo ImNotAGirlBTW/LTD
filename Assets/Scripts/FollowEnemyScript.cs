@@ -29,7 +29,7 @@ public class FollowEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(FirstInRange);
+       // Debug.Log(FirstInRange);
         float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite)
         {
