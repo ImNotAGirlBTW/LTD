@@ -11,13 +11,12 @@ public class GuyCombat : MonoBehaviour
     public Transform attackPos;
     public float attackRange;
     public LayerMask whatIsEnemy;
-      public LayerMask whatIsBullet;
+    public LayerMask whatIsBullet;
 
     public int damage;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -29,19 +28,19 @@ public class GuyCombat : MonoBehaviour
     if (Input.GetKey(KeyCode.Space))
     {
           animator.SetBool("attack",true);
-        Debug.Log("ParryThisYouFCasual");
+        //Debug.Log("ParryThisYouFCasual");
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
     foreach (Collider2D Enemy in enemiesToDamage)
         {
-            Debug.Log("hit");
-           Enemy.GetComponent<EnemyScript>().currentHealth -= damage;
+           // Debug.Log("hit");
+           Enemy.GetComponent<EnemyHealthScript>().currentHealth -= damage;
 
         }
 
              Collider2D[] bulletsToDestroy = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsBullet);
     foreach (Collider2D bullet in bulletsToDestroy)
         {
-            Debug.Log("hit");
+            //Debug.Log("hit");
             bullet.GetComponent<BulletBotScript>().destroy();
 
         }
@@ -68,5 +67,7 @@ public void EndMelee()
 {
         animator.SetBool("attack",false);
 }
+
+    
 
 }
