@@ -11,14 +11,25 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Physics2D.IgnoreCollision(Bullet.GetComponent<Collider2D>(),this.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(Bullet.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
     }
 
-    
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("wall"))
+        {
+            Destroy(gameObject);
+
+
+        }
+
+
+
+    }
 }

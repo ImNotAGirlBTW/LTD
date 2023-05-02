@@ -63,13 +63,7 @@ public class FollowEnemyScript : MonoBehaviour
             playerHealth.TakeDamage(damage);
             Instantiate(key, transform.position, Quaternion.identity);
         }
-        else
-        {
-
-            Destroy(col.gameObject);
-
-        }
-
+    
         if (col.gameObject.tag.Equals("Bullet"))
         {
             currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack;
