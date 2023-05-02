@@ -34,7 +34,11 @@ public class PlayerHealth : MonoBehaviour
             hearts[i].sprite = fullHeart;
         }
     }
-
+    public void AddHealth(int amount)
+    {
+        health += amount;
+        health = Mathf.Min(health, maxHealth);
+    }
 
     public void TakeDamage(int damage)
     {
@@ -42,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             isAlive = false;
-            Time.timeScale = 0f;
+           // Time.timeScale = 0f;
             //Destroy(gameObject);
         }
     }
