@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Images/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Images/Scenes/DungeonScene.unity
+    guid: eb115bebd9c171c4cbe98bc836d567c4
   m_configObjects: {}
