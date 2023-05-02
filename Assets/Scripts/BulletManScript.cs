@@ -5,12 +5,13 @@ using UnityEngine;
 public class BulletManScript : MonoBehaviour
 {
     public float speed = 5f; // rychlost pohybu bota
-    public float shootInterval = 2f; // interval støelby
-    public GameObject bulletBotPrefab; // prefab støely
+    public float shootInterval = 2f; // interval stï¿½elby
+    public GameObject bulletBotPrefab; // prefab stï¿½ely
 
-    //public Transform gunTransform; // reference na transform zbranì
-    private GameObject player; // reference na hráèe
-    private float lastShootTime; // èas poslední støelby
+
+    private GameObject player; // reference na hrï¿½ï¿½e
+    private float lastShootTime; // ï¿½as poslednï¿½ stï¿½elby
+
 
     private Rigidbody2D rb;
 
@@ -22,9 +23,9 @@ public class BulletManScript : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("player"); // získání reference na hráèe
+        player = GameObject.FindGameObjectWithTag("player"); // zï¿½skï¿½nï¿½ reference na hrï¿½ï¿½e
         rb = GetComponent<Rigidbody2D>();
-        lastShootTime = Time.time; // inicializace èasu poslední støelby
+        lastShootTime = Time.time; // inicializace ï¿½asu poslednï¿½ stï¿½elby
 
         currentHealth = 100;
 
@@ -35,55 +36,56 @@ public class BulletManScript : MonoBehaviour
 
     void Update()
     {
-        // následování hráèe
+        // nï¿½sledovï¿½nï¿½ hrï¿½ï¿½e
         Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.velocity = direction * speed;
 
-        // støelba na hráèe s intervaly
+        // stï¿½elba na hrï¿½ï¿½e s intervaly
         if (Time.time - lastShootTime > shootInterval)
         {
             Shoot();
             lastShootTime = Time.time;
         }
 
-        // Otoèení zbranì vlevo nebo vpravo
-        /*if (direction.x < 0) // hráè je vlevo
+        // Otoï¿½enï¿½ zbranï¿½ vlevo nebo vpravo
+        /*if (direction.x < 0) // hrï¿½ï¿½ je vlevo
         {
-            gunTransform.localRotation = Quaternion.Euler(0f, 180f, 0f); // otoèení zbranì doleva
+            gunTransform.localRotation = Quaternion.Euler(0f, 180f, 0f); // otoï¿½enï¿½ zbranï¿½ doleva
         }
-        else // hráè je vpravo nebo v pøímé linii
+        else // hrï¿½ï¿½ je vpravo nebo v pï¿½ï¿½mï¿½ linii
         {
-            gunTransform.localRotation = Quaternion.Euler(0f, 0f, 0f); // otoèení zbranì doprava
+            gunTransform.localRotation = Quaternion.Euler(0f, 0f, 0f); // otoï¿½enï¿½ zbranï¿½ doprava
         } */
     }
 
     void Shoot()
     {
-        // vytvoøení støely
+        // vytvoï¿½enï¿½ stï¿½ely
         GameObject bullet = Instantiate(bulletBotPrefab, transform.position, Quaternion.identity);
 
-        // urèení smìru støely
+        // urï¿½enï¿½ smï¿½ru stï¿½ely
         Vector2 direction = (player.transform.position - transform.position).normalized;
 
-        // vystøelení støely
+        // vystï¿½elenï¿½ stï¿½ely
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         bulletRb.AddForce(direction * 10f, ForceMode2D.Impulse);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // reakce na kolizi s hráèem
+        // reakce na kolizi s hrï¿½ï¿½em
         if (other.CompareTag("player"))
         {
-            // snížení zdraví hráèe
+            // snï¿½enï¿½ zdravï¿½ hrï¿½ï¿½e
             PlayerHealth health = other.GetComponent<PlayerHealth>();
             if (health != null)
             {
                 health.TakeDamage(damage);
             }
 
-            // znièení bota
-            Destroy(gameObject);
+            // zniï¿½enï¿½ bota
+           // Destroy(gameObject);
+           
         }
 
         
