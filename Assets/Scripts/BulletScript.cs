@@ -20,6 +20,8 @@ public class BulletScript : MonoBehaviour
 
         Physics2D.IgnoreCollision(Bullet.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
 
+
+
     }
 
     void Destroy()
