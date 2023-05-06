@@ -44,7 +44,7 @@ public class PointShootScript : MonoBehaviour
          playerG.transform.rotation = Quaternion.Euler(0.0f,0.0f,rotationZ );
         playerG.transform.position = Player.transform.position;
         StartCoroutine(Reload());
-        if(hasAmmo){
+        if(clickAmount > 0){
         if(Input.GetMouseButtonDown(0)){
             float distance = difference.magnitude;
             Vector2 direction = difference / distance;
@@ -85,7 +85,7 @@ public class PointShootScript : MonoBehaviour
     void checkAmmo()
     {
         if(clickAmount == 0){
-            hasAmmo = false;
+    
             clickAmount =10;
 
     }
@@ -97,8 +97,10 @@ public class PointShootScript : MonoBehaviour
         {
             Debug.Log("reloding");
       yield return new WaitForSeconds(1.5f );
+      clickAmount =10;
       AmmoText.text = clickAmount +"/∞";
         hasAmmo =true;
+        
                 }
     }
 

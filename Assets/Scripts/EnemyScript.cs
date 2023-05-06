@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class EnemyScript : MonoBehaviour
 {
     //[SerializeField]
     //public int maxHealth = 100;
     public Animator animator;
+    public Slider slider;
+    //public GameObject targer;
     //public int currentHealth;*/
 
     // Start is called before the first frame update
@@ -19,7 +21,7 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        slider.value = this.gameObject.GetComponent<EnemyHealthScript>().currentHealth;
 
 
 
@@ -34,6 +36,7 @@ public class EnemyScript : MonoBehaviour
             animator.SetBool("hit", true);
             //Destroy(col.gameObject);
             StartCoroutine(Blink());
+           
             //Destroy(gameObject);
         }
 

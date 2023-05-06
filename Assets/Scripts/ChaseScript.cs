@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChaseScript : MonoBehaviour
 { 
+    public Animator animator;
     public float speed;
     private float lineOfSite = 8f;
     private Transform player;
@@ -21,8 +22,10 @@ public class ChaseScript : MonoBehaviour
        float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite)
         {
-           
+            animator.SetBool("InRange",true);
             transform.position = Vector3.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime);
+}else {
+    animator.SetBool("InRange",false);
 }
     }
  private void OnDrawGizmosSelected()
