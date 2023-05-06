@@ -6,7 +6,10 @@ public class BulletBotScript : MonoBehaviour
 {
     public int damage; // po�kozen�, kter� st�ela zp�sob�
     public int Attack = 20;
-
+  void Start()
+    {
+        StartCoroutine(TTL());
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         // reakce na kolizi se zdi nebo jin�m objektem
@@ -33,5 +36,12 @@ public class BulletBotScript : MonoBehaviour
     public void destroy()
     {
         Destroy(gameObject);
+    }
+
+
+     IEnumerator  TTL()
+    {
+     yield return new WaitForSeconds(3f);
+        destroy();
     }
 }
