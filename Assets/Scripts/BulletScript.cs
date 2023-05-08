@@ -11,7 +11,7 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(TTL());
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class BulletScript : MonoBehaviour
 
     }
 
-    void Destroy()
+    void destroy()
     {
         Destroy(gameObject);
 
@@ -41,5 +41,10 @@ public class BulletScript : MonoBehaviour
 
 
 
+    }
+
+    IEnumerator TTL(){
+        yield return new WaitForSeconds(3);
+        destroy();
     }
 }
