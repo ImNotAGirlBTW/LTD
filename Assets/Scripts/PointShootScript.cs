@@ -35,7 +35,7 @@ public class PointShootScript : MonoBehaviour
     void Update()
     {
 
-        
+        if(!MainMenuScript.IsPaused){
        target = transform.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y,transform.position.z));
          crosshair.transform.position = new Vector2(target.x, target.y); 
 
@@ -56,7 +56,8 @@ public class PointShootScript : MonoBehaviour
           //Debug.Log(rotationZ);
     
         FlipG(rotationZ);
-        checkAmmo();
+        }
+        
        
     void fire(Vector2 direction, float rotationZ){
         GameObject b = Instantiate(bullet) as GameObject;
@@ -82,13 +83,7 @@ public class PointShootScript : MonoBehaviour
     }
 
 
-    void checkAmmo()
-    {
-        if(clickAmount == 0){
-    
-            clickAmount =10;
 
-    }
     }
 
     IEnumerator Reload()
@@ -106,5 +101,5 @@ public class PointShootScript : MonoBehaviour
 
   
 }
-}
+
 

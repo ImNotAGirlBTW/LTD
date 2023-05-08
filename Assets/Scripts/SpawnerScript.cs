@@ -20,9 +20,9 @@ public class SpawnerScript : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {   
-     
+     if(!MainMenuScript.IsPaused){
         StartCoroutine(abilitySP());
-
+     }
     }
 
  
