@@ -5,9 +5,9 @@ using UnityEngine;
 public class EnemyHealthScript : MonoBehaviour
 {
 
-        public int maxHealth;
+        public float maxHealth;
     //public Animator animator;
-    public int currentHealth;
+    public float currentHealth;
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +28,17 @@ public class EnemyHealthScript : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Bullet"))
         {
+            if(Random.Range(0f,1f) < 0.2f){
+                 currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack *1.5f ;
+            }
+            else{
             currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack;
             Debug.Log(currentHealth);
            //animator.SetBool("hit", true);
             Destroy(col.gameObject);
             //StartCoroutine(Blink());
             //Destroy(gameObject);
+            }
         }
 
     
