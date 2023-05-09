@@ -9,8 +9,8 @@ public class FollowEnemyScript : MonoBehaviour
     private Transform player;
     public int Attack = 20;
 
-    public int maxHealth = 100;
-    public int currentHealth;
+    public float maxHealth = 100;
+    public float currentHealth;
     public GameObject key;
     public Animator animator;
     public bool FirstInRange;

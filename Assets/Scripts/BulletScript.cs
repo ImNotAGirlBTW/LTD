@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
 {
     [SerializeField]
     public float speed = 5f;
-    public int Attack = 20;
+    public float Attack = 20;
     public GameObject Bullet;
     // Start is called before the first frame update
     void Start()

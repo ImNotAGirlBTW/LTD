@@ -19,6 +19,7 @@ public class BulletManScript : MonoBehaviour
     public PlayerHealth playerHealth;
 
     public bool canDmg;
+    public float bulletSpeed;
 
     void Start()
     {
@@ -59,7 +60,7 @@ public class BulletManScript : MonoBehaviour
 
         // vyst�elen� st�ely
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        bulletRb.AddForce(direction * 1f, ForceMode2D.Impulse);
+        bulletRb.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -122,11 +122,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  shootInterval: 2
+  shootInterval: 5
   bulletBotPrefab: {fileID: 3959489801635910746, guid: d5d7ac554dd139b4d958407db2b1188f, type: 3}
   damage: 1
   playerHealth: {fileID: 6324353826908710501, guid: e7ceaf397fcf9b4478ae765f18ab8cc8, type: 3}
   canDmg: 0
+  bulletSpeed: 10
 --- !u!114 &1544246979235691219
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,8 +8,8 @@ public class SpawnerScript : MonoBehaviour
      public GameObject FollowEn;
      public GameObject target;
    // private float Rate = 0.00002f;
-    private float RateB = 0.002f;
-    private float RateF = 0.005f;
+    private float RateB = 0.006f;
+    private float RateF = 0.003f;
     private float RateAb = 0.09f;
     // Start is called before the first frame update
     void Start()
