@@ -24,8 +24,7 @@ public class PointShootScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-   
-          Cursor.visible = false;
+              Cursor.visible = false;
           hasAmmo = true;
         clickAmount = 10;
         AmmoText.text = clickAmount +"/∞";
@@ -82,7 +81,10 @@ public class PointShootScript : MonoBehaviour
        
     }
 
-
+    if(clickAmount == 0){
+        clickAmount=10;
+        AmmoText.text = clickAmount+"/∞";
+    }
 
     }
 
@@ -98,6 +100,8 @@ public class PointShootScript : MonoBehaviour
         
                 }
     }
+
+
 
   
 }
