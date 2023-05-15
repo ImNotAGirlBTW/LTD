@@ -27,6 +27,12 @@ public class MainMenuScript : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    
+   public void ResetGame(){
+        SceneManager.LoadScene(1);
+        ResumeGame();
+    }   
+
     public void ResumeGame()
     {
         pauseGame.SetActive(false);
