@@ -8,11 +8,10 @@ public class EnemyHealthScript : MonoBehaviour
         public float maxHealth;
     //public Animator animator;
     public float currentHealth;
-    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
     }
 
@@ -40,7 +39,6 @@ public class EnemyHealthScript : MonoBehaviour
             //StartCoroutine(Blink());
             //Destroy(gameObject);
             }
-            rb.velocity = Vector2.zero;
         }
 
     
