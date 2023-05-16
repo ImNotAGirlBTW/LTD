@@ -11,7 +11,7 @@ public class FollowEnemyScript : MonoBehaviour
 
     public float maxHealth = 100;
     public float currentHealth;
-    public GameObject key;
+    public GameObject extraHealth;
     public Animator animator;
     public bool FirstInRange;
 
@@ -61,7 +61,10 @@ public class FollowEnemyScript : MonoBehaviour
         if (col.gameObject.tag == "player")
         {
             playerHealth.TakeDamage(damage);
-            Instantiate(key, transform.position, Quaternion.identity);
+                if(Random.Range(0f,1f) <=0.33f)
+            {
+            Instantiate(extraHealth, transform.position, Quaternion.identity);
+            }
         }
 
         else
@@ -82,7 +85,10 @@ public class FollowEnemyScript : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Instantiate(key, transform.position, Quaternion.identity);
+            if(Random.Range(0f,1f) <= 0.33f)
+            {
+            Instantiate(extraHealth, transform.position, Quaternion.identity);
+            }
             Destroy(gameObject);
 
         }

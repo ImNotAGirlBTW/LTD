@@ -121,7 +121,7 @@ MonoBehaviour:
   Attack: 1
   maxHealth: 100
   currentHealth: 0
-  key: {fileID: 3471400262682225435, guid: a875e66535d1a3f4e8fdfb593209256f, type: 3}
+  key: {fileID: 1749914369629881561, guid: 82776cbf45d64934f99bd6b379e510ec, type: 3}
   animator: {fileID: 8719283713867430583}
   FirstInRange: 0
   damage: 1
