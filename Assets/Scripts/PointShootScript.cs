@@ -43,7 +43,10 @@ public class PointShootScript : MonoBehaviour
           rotationZ = Mathf.Atan2(difference.y,difference.x)* Mathf.Rad2Deg;
          playerG.transform.rotation = Quaternion.Euler(0.0f,0.0f,rotationZ );
         playerG.transform.position = Player.transform.position;
+            if(Input.GetKeyDown("r"))
+        {
         StartCoroutine(Reload());
+        }
         if(clickAmount > 0){
         if(Input.GetMouseButtonDown(0)){
             float distance = difference.magnitude;
@@ -82,21 +85,22 @@ public class PointShootScript : MonoBehaviour
        
     }
 
-
+    if(clickAmount == 0){
+        StartCoroutine(Reload());
+    }
 
     }
 
     IEnumerator Reload()
     {
-        if(Input.GetKeyDown("r"))
-        {
-            Debug.Log("reloding");
+   
+           
       yield return new WaitForSeconds(1.5f );
       clickAmount =10;
       AmmoText.text = clickAmount +"/∞";
         hasAmmo =true;
         
-                }
+                
     }
 
   

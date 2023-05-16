@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2104305418118707407}
   - component: {fileID: 1544246979235691219}
   - component: {fileID: 2104305418118707406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletMan
   m_TagString: Bot
   m_Icon: {fileID: 0}
