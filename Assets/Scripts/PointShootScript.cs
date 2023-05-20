@@ -20,7 +20,7 @@ public class PointShootScript : MonoBehaviour
     public int clickAmount;
     public TMP_Text AmmoText;
     public float rotationZ;
-     
+    private bool isFiring = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,27 +48,36 @@ public class PointShootScript : MonoBehaviour
         StartCoroutine(Reload());
         }
         if(clickAmount > 0){
-        if(Input.GetMouseButtonDown(0)){
+        if(Input.GetMouseButton(0) && !isFiring){
+             isFiring = true;
             float distance = difference.magnitude;
             Vector2 direction = difference / distance;
             direction.Normalize();
-            fire(direction, rotationZ);
+           // StartCoroutine(fire(direction, rotationZ));
+           StartFiring(direction,rotationZ);
            }
+        }else{
+            clickAmount = -1;
+            AmmoText.text =clickAmount+1 +"/∞";
         }
 
-          //Debug.Log(rotationZ);
+    
     
         FlipG(rotationZ);
         }
-        
+        void StartFiring(Vector2 direction, float rotationZ){
+            StartCoroutine(fire(direction,  rotationZ));
+        }
        
-    void fire(Vector2 direction, float rotationZ){
+    IEnumerator fire(Vector2 direction, float rotationZ){
         GameObject b = Instantiate(bullet) as GameObject;
         b.transform.position = GunL.transform.position;
         b.transform.rotation = Quaternion.Euler(0.0f,0.0f,rotationZ);
         b.GetComponent<Rigidbody2D>().velocity = direction * speed;
         clickAmount -= 1;
         AmmoText.text = clickAmount +"/∞";
+        yield return new WaitForSeconds(0.2f);
+        isFiring = false;
     }
 
     void FlipG(float rotationZ)
@@ -85,7 +94,7 @@ public class PointShootScript : MonoBehaviour
        
     }
 
-    if(clickAmount == 0){
+    if(clickAmount == -1 && Input.GetMouseButtonDown(0)){
         StartCoroutine(Reload());
     }
 

@@ -29,7 +29,6 @@ public class FollowEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // Debug.Log(FirstInRange);
         float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
         if (distanceFromPlayer < lineOfSite)
         {
@@ -78,7 +77,6 @@ public class FollowEnemyScript : MonoBehaviour
         if (col.gameObject.tag.Equals("Bullet"))
         {
             currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack;
-            Debug.Log(currentHealth);
             Destroy(col.gameObject);
             //Destroy(gameObject);
         }

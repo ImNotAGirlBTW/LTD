@@ -32,7 +32,7 @@ public class EnemyScript : MonoBehaviour
         if (col.gameObject.tag.Equals("Bullet"))
         {
            // currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack;
-            //Debug.Log(currentHealth);
+        
             animator.SetBool("hit", true);
             //Destroy(col.gameObject);
             StartCoroutine(Blink());

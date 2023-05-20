@@ -17,7 +17,7 @@ public class guyScript : MonoBehaviour
     public Text KeyScoreText;
     private int ScoreNum;
     public Vector2 direction;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public bool CanRoll;
     public float DodgeSpeed = 2f;
     public float DodgeTime = 0.02f;
@@ -37,6 +37,10 @@ public class guyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      if(!CanRoll){
+        rb.velocity = Vector2.zero;
+      }
+      
       inputHorizontal = Input.GetAxisRaw("Horizontal");
       inputVertical = Input.GetAxisRaw("Vertical");
         Move();
@@ -93,21 +97,6 @@ public class guyScript : MonoBehaviour
 
 
 
-  /**  void Shoot(Vector2 direction, float rotationZ)
-    {
-      Vector3 mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        
-        if(Input.GetMouseButtonDown(0))
-        {
-            GameObject b = Instantiate(bullet) as GameObject;
-            b.transform.position = new Vector2(
-            mousePos.x - transform.position.x,
-             mousePos.y - transform.position.y
-        );
-            b.transform.rotation = Quaternion.Euler(0.0f,0.0f, rotationZ);
-            b.GetComponent<Rigidbody2D>().velocity = direction * speed;
-        }*/
     
     
 

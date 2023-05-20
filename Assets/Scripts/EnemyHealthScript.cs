@@ -33,11 +33,8 @@ public class EnemyHealthScript : MonoBehaviour
             }
             else{
             currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack;
-            Debug.Log(currentHealth);
-           //animator.SetBool("hit", true);
+           
             Destroy(col.gameObject);
-            //StartCoroutine(Blink());
-            //Destroy(gameObject);
             }
         }
 

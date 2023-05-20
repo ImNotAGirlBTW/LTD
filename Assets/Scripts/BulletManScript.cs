@@ -9,7 +9,7 @@ public class BulletManScript : MonoBehaviour
     public GameObject bulletBotPrefab; // prefab st�ely
 
 
-    private GameObject player; // reference na hr��e
+    private Transform player; // reference na hr��e
     private float lastShootTime; // �as posledn� st�elby
 
 
@@ -20,11 +20,11 @@ public class BulletManScript : MonoBehaviour
 
     public bool canDmg;
     public float bulletSpeed;
-
+    private float lineOfSite = 8f;
     void Start()
     {
         canDmg = true;
-        player = GameObject.FindGameObjectWithTag("player"); // z�sk�n� reference na hr��e
+        player = GameObject.FindGameObjectWithTag("player").transform; // z�sk�n� reference na hr��e
         rb = GetComponent<Rigidbody2D>();
         lastShootTime = Time.time; // inicializace �asu posledn� st�elby
 
@@ -37,38 +37,45 @@ public class BulletManScript : MonoBehaviour
 
     void Update()
     {
+        float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
         // n�sledov�n� hr��e
+          if (distanceFromPlayer < lineOfSite)
+        {
         Vector2 direction = (player.transform.position - transform.position).normalized;
         rb.velocity = direction * speed;
-       // Debug.Log(rb.velocity);
+        }
         // st�elba na hr��e s intervaly
         if (Time.time - lastShootTime > shootInterval)
         {
-            Shoot();
+            Shoot(distanceFromPlayer);
             lastShootTime = Time.time;
         }
 
     }
 
-    void Shoot()
+    void Shoot(float distanceFromPlayer)
     {
+        if(distanceFromPlayer < lineOfSite)
+        {
         // vytvo�en� st�ely
         GameObject bullet = Instantiate(bulletBotPrefab, transform.position, Quaternion.identity);
 
         // ur�en� sm�ru st�ely
         Vector2 direction = (player.transform.position - transform.position).normalized;
-
+        
         // vyst�elen� st�ely
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         bulletRb.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
-    }
+
+        }
+            }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         // reakce na kolizi s hr��em
         if (other.CompareTag("player"))
         {
-            Debug.Log("stop");
+        
             speed =0f;
             // sn�en� zdrav� hr��e
             if(canDmg){

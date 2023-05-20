@@ -28,11 +28,11 @@ public class GuyCombat : MonoBehaviour
     if (Input.GetKey(KeyCode.Space))
     {
           animator.SetBool("attack",true);
-        //Debug.Log("ParryThisYouFCasual");
+    
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemy);
     foreach (Collider2D Enemy in enemiesToDamage)
         {
-           // Debug.Log("hit");
+        
            Enemy.GetComponent<EnemyHealthScript>().currentHealth -= damage;
 
         }
@@ -40,7 +40,7 @@ public class GuyCombat : MonoBehaviour
              Collider2D[] bulletsToDestroy = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsBullet);
     foreach (Collider2D bullet in bulletsToDestroy)
         {
-            //Debug.Log("hit");
+            
             bullet.GetComponent<BulletBotScript>().destroy();
 
         }

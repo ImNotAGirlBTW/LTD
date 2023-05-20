@@ -56,7 +56,7 @@ public class PlayerHealth : MonoBehaviour
         if (col.gameObject.tag.Equals("Enemy"))
         {
             health -= col.gameObject.GetComponent<FollowEnemyScript>().Attack;
-            Debug.Log(health);
+        
 
             Destroy(col.gameObject);
 
@@ -66,8 +66,7 @@ public class PlayerHealth : MonoBehaviour
         if (col.gameObject.tag.Equals("BulletBot"))
         {
             health -= col.gameObject.GetComponent<BulletBotScript>().Attack;
-            Debug.Log(health);
-
+        
             Destroy(col.gameObject);
 
             //Destroy(gameObject);
