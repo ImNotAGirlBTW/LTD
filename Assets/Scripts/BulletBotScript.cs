@@ -21,6 +21,7 @@ public class BulletBotScript : MonoBehaviour
         // reakce na kolizi s hr��em
         if (other.CompareTag("player"))
         {
+            other.GetComponent<guyScript>().rb.velocity = Vector2.zero;
             // sn�en� zdrav� hr��e
             PlayerHealth player = other.GetComponent<PlayerHealth>();
             if (player.isAlive)
