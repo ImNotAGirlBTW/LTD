@@ -6,7 +6,7 @@ public class ChaseScript : MonoBehaviour
 { 
     public Animator animator;
     public float speed;
-    private float lineOfSite = 8f;
+    private float lineOfSite = 10f;
     private Transform player;
         private Rigidbody2D rb;
     // Start is called before the first frame update

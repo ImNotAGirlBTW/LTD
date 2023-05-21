@@ -7,7 +7,7 @@ public class FollowEnemyScript : MonoBehaviour
     public float speed;
     private float lineOfSite = 8f;
     private Transform player;
-    public int Attack = 20;
+    public int Attack = 10;
 
     public float maxHealth = 100;
     public float currentHealth;
@@ -59,7 +59,7 @@ public class FollowEnemyScript : MonoBehaviour
     {
         if (col.gameObject.tag == "player")
         {
-            playerHealth.TakeDamage(damage);
+            //playerHealth.TakeDamage(damage);
                 if(Random.Range(0f,1f) <=0.33f)
             {
             Instantiate(extraHealth, transform.position, Quaternion.identity);
