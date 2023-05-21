@@ -8,11 +8,12 @@ public class EnemyHealthScript : MonoBehaviour
         public float maxHealth;
     //public Animator animator;
     public float currentHealth;
-
+    public static float critChance ;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
+        critChance = 0.2f;
     }
 
     // Update is called once per frame
@@ -28,7 +29,7 @@ public class EnemyHealthScript : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Bullet"))
         {
-            if(Random.Range(0f,1f) < 0.2f){
+            if(Random.Range(0f,1f) < critChance){
                  currentHealth -= col.gameObject.GetComponent<BulletScript>().Attack *1.5f ;
             }
             else{
