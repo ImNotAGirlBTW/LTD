@@ -12,11 +12,17 @@ public class EnemyScript : MonoBehaviour
     private Rigidbody2D rb;
     //public GameObject targer;
     public float currentHealth;
-    
+    public float bulletSpeed;
+     public float shootInterval = 2f; 
+    public GameObject bulletBotPrefab;
+    private Transform player;
+    private float lastShootTime;
+    private float lineOfSite = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
+         player = GameObject.FindGameObjectWithTag("player").transform;
         rb = this.GetComponent<Rigidbody2D>();
 
        currentHealth = maxHealth;
@@ -26,6 +32,13 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float distanceFromPlayer = Vector3.Distance(player.position, transform.position);
+        if (Time.time - lastShootTime > shootInterval)
+        {
+            Shoot(distanceFromPlayer);
+            lastShootTime = Time.time;
+        }
+
         slider.value = currentHealth;//this.gameObject.GetComponent<EnemyHealthScript>().currentHealth;
        
            if(slider.value == 0){
@@ -34,11 +47,12 @@ public class EnemyScript : MonoBehaviour
         }
         rb.velocity = Vector2.zero;
 
-
+Debug.Log(currentHealth);
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
+         
         if (col.gameObject.tag.Equals("Bullet"))
         {
             animator.SetBool("hit", true);
@@ -57,6 +71,18 @@ public class EnemyScript : MonoBehaviour
 
     }
 
+        void Shoot(float distanceFromPlayer)
+    {
+        if(distanceFromPlayer < lineOfSite)
+        {
+
+        GameObject bullet = Instantiate(bulletBotPrefab, transform.position, Quaternion.identity);
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+        bulletRb.AddForce(direction * bulletSpeed, ForceMode2D.Impulse);
+
+        }
+    }
     IEnumerator Blink()
     {
         yield return new WaitForSeconds(0.2f);

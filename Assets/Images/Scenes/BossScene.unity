@@ -207,9 +207,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1000
+  m_MaxValue: 1500
   m_WholeNumbers: 0
-  m_Value: 1000
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -12249,6 +12249,14 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 1500
       objectReference: {fileID: 0}
+    - target: {fileID: 4509639595293787735, guid: 6a6df1b8434648e4ab8cdcd1f9dc7c1b, type: 3}
+      propertyPath: bulletSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4509639595293787735, guid: 6a6df1b8434648e4ab8cdcd1f9dc7c1b, type: 3}
+      propertyPath: bulletBotPrefab
+      value: 
+      objectReference: {fileID: 3959489801635910746, guid: 7ae15b058caf03d4d9b66e6a0a4618e4, type: 3}
     - target: {fileID: 4509639595293787738, guid: 6a6df1b8434648e4ab8cdcd1f9dc7c1b, type: 3}
       propertyPath: m_SortingOrder
       value: 10
