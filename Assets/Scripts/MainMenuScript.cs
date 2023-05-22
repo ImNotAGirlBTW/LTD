@@ -30,6 +30,7 @@ public class MainMenuScript : MonoBehaviour
     
    public void ResetGame(){
         SceneManager.LoadScene(1);
+        PlayerHealth.health = 4;
         ResumeGame();
     }   
 
